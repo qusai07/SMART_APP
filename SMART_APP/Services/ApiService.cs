@@ -103,6 +103,7 @@ namespace SMART_APP.Services
             if (!response.IsSuccessStatusCode)
                 return null;
 
+
             var responseContent = await response.Content.ReadAsStringAsync();
             var result = JsonSerializer.Deserialize<LoginResponse>(responseContent, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
