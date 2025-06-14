@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SMART_APP.MainPage"
+    BackgroundColor="{ DynamicResource White }"
+    Title="">
+
+    <Grid RowDefinitions="4*, 3*, Auto"
+      Padding="{ OnIdiom Phone=24, Tablet='100,24' }">
+
+        <!-- Logo Container -->
+        <Border
+        Grid.Row="0"
+        StrokeThickness="0"
+        BackgroundColor="Transparent"
+        VerticalOptions="Fill"
+        HorizontalOptions="Fill">
+
+            <Grid>
+                <Image
+                Source="home.png"
+                Aspect="AspectFit"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="500"
+                HeightRequest="500" />
+
+            </Grid>
+        </Border>
+
+        <!-- Navigation Buttons -->
+        <Border
+        Grid.Row="1"
+        StrokeThickness="0"
+        BackgroundColor="Transparent"
+        VerticalOptions="Fill">
+
+            <VerticalStackLayout
+            Spacing="20"
+            VerticalOptions="Center">
+
+                <Button
+                Text="Login"
+                CornerRadius="18"
+                BackgroundColor="#99c5ff"
+                TextColor="White"
+                FontSize="18"
+                HeightRequest="55"
+                Clicked="OnLoginClicked"/>
+
+                <Button
+                Text="Sign Up"
+                CornerRadius="18"
+                BackgroundColor="#99c5ff"
+                TextColor="White"
+                FontSize="18"
+                HeightRequest="55"
+                Clicked="OnSignUpClicked"/>
+            </VerticalStackLayout>
+        </Border>
+
+        <!-- Footer -->
+        <VerticalStackLayout
+        Grid.Row="2"
+        VerticalOptions="End"
+        Margin="0,0,0,30">
+
+            <Label
+            Text="© Smart Vehicle Hold 2025"
+            FontSize="12"
+            TextColor="{ DynamicResource TextSecondaryColor }"
+            HorizontalTextAlignment="Center"/>
+        </VerticalStackLayout>
+
+    </Grid>
+
+</ContentPage>

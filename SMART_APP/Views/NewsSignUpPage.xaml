@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SMART_APP"
+    x:Class="SMART_APP.NewsSignUpPage"
+    BackgroundColor="{ DynamicResource BackgroundColor }"
+    Title="">
+    <!-- Main Container -->
+    <ScrollView>
+        <Grid
+            RowDefinitions="*,*,*"
+            Padding="{ OnIdiom
+                Phone='24',
+                Tablet='100,24'
+            }">
+
+            <!-- Title / Subtitle -->
+            <VerticalStackLayout
+                VerticalOptions="Center"
+                Margin="0,0,0,10">
+                <!-- Title -->
+                <Label
+                    Text="Sign Up"
+                    FontSize="{ StaticResource LargeTitleFontSize }"
+                    HorizontalOptions="Center"
+                />
+
+                <!-- Subtitle -->
+                <Label
+                    Text="It only takes a minute to create   your account"
+                    FontSize="12"
+                    TextColor="{ DynamicResource TextSecondaryColor }"
+                    Margin="0,8,0,0"
+                    HorizontalTextAlignment="Center"
+                />
+            </VerticalStackLayout>
+
+
+            <!-- Entries Container -->
+            <VerticalStackLayout
+                Grid.Row="1"
+                Margin="0,0,0,10"
+                VerticalOptions="Start"
+                Spacing="16">
+
+                <Entry Placeholder="Full Name" />
+                <Entry Placeholder="UserName" />
+                <Entry Placeholder="Email" />
+                <Entry Placeholder="Mobile Number" />
+                <Entry Placeholder="National Number" />
+
+
+                <!-- Password Entry -->
+                <Grid
+                    BackgroundColor="Transparent"
+                    ColumnDefinitions="*,Auto">
+                                    <Entry
+                        x:Name="passwordEntry"
+                        Placeholder="Password"
+                        IsPassword="True"
+    />
+                    <Label
+        x:Name="passwordIcon"
+        Grid.Column="1"
+        Text="{ x:Static local:MaterialCommunityIconsFont.EyeOutline }"
+        FontSize="20"
+        TextColor="{ DynamicResource TextSecondaryColor }"
+        FontFamily="{ StaticResource NewsIconsFontFamily }"
+        HorizontalOptions="End"
+        VerticalOptions="Center"
+        WidthRequest="34"
+        Margin="0,0,8,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnPasswordEyeTapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+
+                <!-- Confirm Password Entry -->
+                <Grid
+                    BackgroundColor="Transparent"
+                    ColumnDefinitions="*,Auto">
+                    <Entry
+                        x:Name="confirmPasswordEntry"
+                        Placeholder="Confirm Password"
+                        IsPassword="True"
+                    />
+                    <Label
+                        x:Name="confirmPasswordIcon"
+                        Grid.Column="1"
+                        Text="{ x:Static local:MaterialCommunityIconsFont.EyeOutline }"
+                        FontSize="20"
+                        TextColor="{ DynamicResource TextSecondaryColor }"
+                        FontFamily="{ StaticResource NewsIconsFontFamily }"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        WidthRequest="34"
+                        Margin="0,0,8,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnConfirmPasswordEyeTapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+
+            </VerticalStackLayout>
+
+            <!-- Container -->
+            <VerticalStackLayout
+                Grid.Row="2"
+                VerticalOptions="End"
+                Spacing="26"
+                Margin="0,10,0,30">
+                <!-- Create Account -->
+                <Button
+                    Text="Create Account"
+                    Style="{ StaticResource PrimaryActionButtonStyle }"
+                    Clicked="CreateButtonClicked"
+                />
+                <!-- Button/Text Container -->
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <!-- Text -->
+                    <Label
+                        Text="Already have an account? "
+                        FontSize="12"
+                        TextColor="{ DynamicResource TextSecondaryColor }"
+                        HorizontalTextAlignment="Center"
+                    />
+                    <!-- Login Button -->
+                    <Button
+                        Text="Login"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        Clicked="LoginButtonClicked"
+                        Style="{ DynamicResource LinkButtonStyle }"
+                    />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>
