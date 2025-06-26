@@ -1,0 +1,92 @@
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SMART_APP"
+    x:Class="SMART_APP.ProfileUserPage"
+    BackgroundColor="{DynamicResource BackgroundColor}"
+    Title="Profile">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+                 IconImageSource="back_icon.png"
+                 Order="Primary"
+                 Priority="0"
+                 Clicked="BackAndLogoutClicked" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <Grid Padding="24"
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
+              RowSpacing="20">
+
+            <Border
+                Grid.Row="0"
+                BackgroundColor="{DynamicResource BackgroundSecondaryColor}"
+                StrokeThickness="1"
+                WidthRequest="120"
+                HeightRequest="120"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Background="#EEE"
+                StrokeShape="RoundRectangle 60">
+                <Image Source="profile_placeholder.png"
+                       Aspect="AspectFill"/>
+            </Border>
+
+            <Grid Grid.Row="1">
+                <Label Text="{Binding FullName}"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="{DynamicResource TextSecondaryColor}"
+                       HorizontalOptions="Center"/>
+            </Grid>
+
+            <Grid Grid.Row="2"
+                  ColumnDefinitions="Auto,*"
+                  ColumnSpacing="8">
+                <Label Text="User Name"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="{DynamicResource TextSecondaryColor}"
+                       Grid.Column="0"/>
+                <Label Text="{Binding UserName}"
+                       FontSize="16"
+                       TextColor="{DynamicResource TextSecondaryColor}"
+                       Grid.Column="1"/>
+            </Grid>
+
+            <Grid Grid.Row="3"
+                  ColumnDefinitions="Auto,*"
+                  ColumnSpacing="8">
+                <Label Text="Email Address"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="{DynamicResource TextSecondaryColor}"
+                       Grid.Column="0"/>
+                <Label Text="{Binding EmailAddress}"
+                       FontSize="16"
+                       TextColor="{DynamicResource TextSecondaryColor}"
+                       Grid.Column="1"/>
+            </Grid>
+
+            <Grid Grid.Row="4"
+                  ColumnDefinitions="Auto,*"
+                  ColumnSpacing="8">
+                <Label Text="Phone Number"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="{DynamicResource TextSecondaryColor}"
+                       Grid.Column="0"/>
+                <Label Text="{Binding PhoneNumber}"
+                       FontSize="16"
+                       TextColor="{DynamicResource TextSecondaryColor}"
+                       Grid.Column="1"/>
+            </Grid>
+
+            <Button Grid.Row="5"
+                    Text="Edit Profile"
+                    Style="{StaticResource PrimaryActionButtonStyle}"
+                    HorizontalOptions="Fill"/>
+        </Grid>
+    </ScrollView>
+</ContentPage>

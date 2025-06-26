@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http.Headers;
 using System.Text.Json;
-using SMART_APP.Models;
 using System.Net;
 
 
@@ -15,6 +14,8 @@ namespace SMART_APP.Services
     using System.Text;
     using System.Text.Json;
     using Microsoft.Maui.Devices;
+    using SMART_APP.Models;
+    using SMART_APP.Models.Login;
     using static System.Net.WebRequestMethods;
 
     public class ApiService
@@ -47,20 +48,7 @@ namespace SMART_APP.Services
         }
 
 
-        public async Task<LoginResponse> LoginAsync(LoginModel model)
-        {
-            var response = await ApiService.Instance.RequestSmartAPIs<LoginResponse>("Auth/Login", model);
-
-            if (response.IsSuccess)
-            {
-                return response.Data;
-            }
-            else
-            {
-                Console.WriteLine($"خطأ في الاتصال: {response.ErrorMessage}");
-                return null;
-            }
-        }
+    
 
 
 
@@ -79,8 +67,8 @@ namespace SMART_APP.Services
                 var response = await _httpClient.PostAsync($"api/{operation}", requestContent);
 
                 var content = await response.Content.ReadAsStringAsync();
-                await SecureStorage.Default.SetAsync("Token", content);
-
+                //await SecureStorage.Default.SetAsync("Token", loginResponse.Token);
+                
                 return await HandleResponse<T>(response, content, operation, requestModel, retryUnauthorized);
             }
             catch (Exception ex)
@@ -103,6 +91,7 @@ namespace SMART_APP.Services
             public T Data { get; set; }
             public string ErrorMessage { get; set; }
         }
+  
 
         public class FailedResponseModel
         {

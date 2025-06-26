@@ -1,123 +1,100 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:SMART_APP"
     x:Class="SMART_APP.NewsLoginPage"
-    BackgroundColor="{ DynamicResource BackgroundColor }"
+    BackgroundColor="{DynamicResource BackgroundColor}"
     Title="">
-    <!-- Main Container -->
-    <ScrollView>
-        <Grid
-            RowDefinitions="*,*,*"
-            Padding="{ OnIdiom
-                Phone=24,
-                Tablet='100,24'
-            }">
 
-            <VerticalStackLayout
-                VerticalOptions="Center"
-                Margin="0,0,0,10">
-                <!-- Title -->
+    <ScrollView>
+        <Grid Padding="{OnIdiom Phone=24, Tablet='100,24'}"
+              RowDefinitions="Auto,Auto,Auto"
+              RowSpacing="20">
+            <Grid Grid.Row="0" Margin="0,0,0,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
                 <Label
                     Text="Welcome back!"
-                    FontSize="{ StaticResource LargeTitleFontSize }"
+                    FontSize="{StaticResource LargeTitleFontSize}"
                     HorizontalOptions="Center"
-                />
+                    Grid.Row="0" />
 
-                <!-- Subtitle -->
                 <Label
-                    Text="Enter your email address and password to login "
+                    Text="Enter your email address and password to login"
                     FontSize="12"
-                    TextColor="{ DynamicResource TextSecondaryColor }"
+                    TextColor="{DynamicResource TextSecondaryColor}"
                     Margin="0,8,0,0"
                     HorizontalTextAlignment="Center"
-                />
+                    Grid.Row="1" />
+            </Grid>
 
-            </VerticalStackLayout>
+            <Grid Grid.Row="1" RowDefinitions="Auto,Auto,Auto" RowSpacing="16" Margin="0,0,0,20">
+                <Entry x:Name="EmailEntry"
+                       Placeholder="Email"
+                       HorizontalOptions="Fill"
+                       Grid.Row="0" />
 
-            <!-- Entries / Forgot Password Button -->
-            <VerticalStackLayout
-                Grid.Row="1"
-                Margin="0,0,0,10"
-                VerticalOptions="Start"
-                Spacing="16">
-
-                <!-- Email Entry -->
-                <Entry x:Name="EmailEntry" Placeholder="Email" />
-
-                <!-- Password Entry w/Icon -->
-                <Grid
-                    BackgroundColor="Transparent"
-                    ColumnDefinitions="*,Auto">
-                    <Rectangle
-                        RadiusX="20"
-                        RadiusY="20"
-                        Fill="{ Binding BackgroundColor, Source={x:Reference entry} }"
-                        Grid.ColumnSpan="2"
-                    />
-
-                    <!-- Entry -->
-                    <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
-
-
-                    <!-- Icon -->
+                <Grid Grid.Row="1" HeightRequest="40">
+                    <Entry x:Name="PasswordEntry"
+                           Placeholder="Password"
+                           IsPassword="True"
+                           HorizontalOptions="Fill"
+                           VerticalOptions="Center"
+                           Margin="0"
+                           />
                     <Label
-                        x:Name="icon"
-                        Grid.Column="1"
-                        Text="{ x:Static local:MaterialCommunityIconsFont.EyeOutline }"
-                        FontFamily="{ StaticResource NewsIconsFontFamily }"
+                        Text="{x:Static local:MaterialCommunityIconsFont.EyeOutline}"
+                        FontFamily="{StaticResource NewsIconsFontFamily}"
                         FontSize="20"
-                        TextColor="{ DynamicResource TextSecondaryColor }"
-                        HorizontalOptions="End"
+                        TextColor="{DynamicResource TextSecondaryColor}"
                         VerticalOptions="Center"
-                        WidthRequest="34"
-                        Margin="0,0,8,0">
+                        HorizontalOptions="End"
+                        Margin="0,0,10,0"
+                        InputTransparent="False">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnEyeTapped" />
                         </Label.GestureRecognizers>
                     </Label>
                 </Grid>
-
                 <Button
+                    Grid.Row="2"
                     Text="Forgot your password?"
                     HorizontalOptions="End"
-                    Style="{ DynamicResource LinkButtonStyle }"
-                />
-            </VerticalStackLayout>
+                    Style="{DynamicResource LinkButtonStyle}"
+                    Command="{Binding ForgetPasswordCommand}"/>
 
-            <!-- Button/Text Container -->
-            <VerticalStackLayout
-                Grid.Row="2"
-                VerticalOptions="End"
-                Spacing="26"
-                Margin="0,0,0,30">
-                <!-- Login Button -->
+            </Grid>
+
+            <Grid Grid.Row="2" RowDefinitions="Auto,Auto" RowSpacing="20" Margin="0,0,0,30">
+
                 <Button
                     Text="Login"
-                    Style="{ StaticResource PrimaryActionButtonStyle }"
+                    Style="{StaticResource PrimaryActionButtonStyle}"
                     Clicked="LoginButtonClicked"
-                />
+                    Grid.Row="0" />
 
-                <HorizontalStackLayout HorizontalOptions="Center">
-                    <!-- Text -->
+                <Grid Grid.Row="1" ColumnDefinitions="Auto,Auto" HorizontalOptions="Center" ColumnSpacing="4" VerticalOptions="Center">
                     <Label
                         Text="Already have an account? "
                         FontSize="12"
-                        TextColor="{ DynamicResource TextSecondaryColor }"
-                        HorizontalTextAlignment="Center"
-                    />
+                        TextColor="{DynamicResource TextSecondaryColor}"
+                        VerticalTextAlignment="Center"
+                        Grid.Column="0" />
 
-                    <!-- SignUp Button -->
                     <Button
                         Text="Sign Up"
-                        HorizontalOptions="End"
-                        VerticalOptions="Start"
+                        Style="{DynamicResource LinkButtonStyle}"
                         Clicked="SignupButtonClicked"
-                        Style="{ DynamicResource LinkButtonStyle }"
-                    />
-                </HorizontalStackLayout>
-            </VerticalStackLayout>
+                        Padding="0"
+                        Margin="0"
+                        VerticalOptions="Center"
+                        Grid.Column="1" />
+                </Grid>
+            </Grid>
+
         </Grid>
     </ScrollView>
 </ContentPage>
